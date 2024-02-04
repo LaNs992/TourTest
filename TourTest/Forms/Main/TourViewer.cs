@@ -7,34 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TourTest.Models;
 
 namespace TourTest.Forms.Main
 {
     public partial class TourViewer : UserControl
     {
-        //private readonly Tour tourView;
-        //private EventHandler<(Tour, byte[])> onImageChanged;
-        //public TourViewer(Tour tour)
-        //{
-        //    InitializeComponent();
-        //    this.tourView = tour;
-        //    InitTour(tour);
-        //}
-        //public Tour Tour => tourView;
-        //private void InitTour(Tour tour)
-        //{
-        //   NameLb.Text = tour.Name;
-        //   Price.Text = $"{tour.Price} р";
-        //    Actual.Text = tour.IsActual ? "Актуален" : "Не актуален";
-        //    Actual.ForeColor = tour.IsActual ? Color.Green : Color.Red;
-        //    CountTick.Text = $"Кол: {tour.TicketCount.ToString()}";
-        //    /*if (tour.ImagePreview != null)
-        //    {
-        //        MemoryStream image = new MemoryStream();
-        //        image = new MemoryStream(tour.ImagePreview);
-        //        pictureTour.Image = Image.FromStream(image);            
-        //    }*/
-        //}
+        private readonly Tour tourView;
+        private EventHandler<(Tour, byte[])> onImageChanged;
+        public TourViewer(Tour tour)
+        {
+            InitializeComponent();
+            this.tourView = tour;
+            InitTour(tour);
+        }
+        public Tour Tour => tourView;
+        private void InitTour(Tour tour)
+        {
+           NameLb.Text = tour.Name;
+           Price.Text = $"{tour.Price} р";
+            Actual.Text = tour.IsActual ? "Актуален" : "Не актуален";
+            Actual.ForeColor = tour.IsActual ? Color.Green : Color.Red;
+            CountTick.Text = $"Кол: {tour.TicketCount.ToString()}";
+            /*if (tour.ImagePreview != null)
+            {
+                MemoryStream image = new MemoryStream();
+                image = new MemoryStream(tour.ImagePreview);
+                pictureTour.Image = Image.FromStream(image);            
+            }*/
+        }
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 

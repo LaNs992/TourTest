@@ -65,6 +65,7 @@
             this.descTextBox.Name = "descTextBox";
             this.descTextBox.Size = new System.Drawing.Size(254, 69);
             this.descTextBox.TabIndex = 32;
+            this.descTextBox.TextChanged += new System.EventHandler(this.descTextBox_TextChanged);
             // 
             // deleteButton
             // 
@@ -245,7 +246,7 @@
             this.Controls.Add(this.nameLabel);
             this.Name = "AddTour";
             this.Text = "AddTour";
-            //this.Load += new System.EventHandler(this.AddTour_Load);
+            this.Load += new System.EventHandler(this.AddTour_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ticketsNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

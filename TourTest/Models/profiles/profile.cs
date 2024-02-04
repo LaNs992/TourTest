@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TourTest.context.profiles
+namespace TourTest.Models.profiles
 {
     public class profile
 

@@ -1,8 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using TourTest.Models;
+using Type = TourTest.Models.Type;
 
 namespace TourTest.context
 {
@@ -24,7 +25,7 @@ namespace TourTest.context
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Tour> Tours { get; set; } = null!;
-        public virtual DbSet<Models.Type> Types { get; set; } = null!;
+        public virtual DbSet<Type> Types { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -69,7 +70,7 @@ namespace TourTest.context
 
                 entity.HasMany(d => d.Tours)
                     .WithMany(p => p.Hotels)
-                    .UsingEntity<Dictionary<int, object>>(
+                    .UsingEntity<Dictionary<string, object>>(
                         "HotelOfTour",
                         l => l.HasOne<Tour>().WithMany().HasForeignKey("TourId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_HotelOfTour_Tour"),
                         r => r.HasOne<Hotel>().WithMany().HasForeignKey("HotelId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_HotelOfTour_Hotel"),
@@ -78,8 +79,6 @@ namespace TourTest.context
                             j.HasKey("HotelId", "TourId");
 
                             j.ToTable("HotelOfTour");
-
-                            //j.IndexerProperty<int>("TourId").IsUnicode(false);
                         });
             });
 
@@ -127,10 +126,7 @@ namespace TourTest.context
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.TourId)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("Tour_id");
+                entity.Property(e => e.TourId).HasColumnName("Tour_id");
 
                 entity.HasOne(d => d.Tour)
                     .WithMany(p => p.Orders)
@@ -143,7 +139,7 @@ namespace TourTest.context
             {
                 entity.HasKey(e => e.IdRole);
 
-                entity.Property(e => e.IdRole) 
+                entity.Property(e => e.IdRole)
                     .ValueGeneratedNever()
                     .HasColumnName("ID_Role");
 
@@ -156,10 +152,6 @@ namespace TourTest.context
             modelBuilder.Entity<Tour>(entity =>
             {
                 entity.ToTable("Tour");
-
-                entity.Property(e => e.Id)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -179,9 +171,9 @@ namespace TourTest.context
 
                 entity.HasMany(d => d.Types)
                     .WithMany(p => p.Tours)
-                    .UsingEntity<Dictionary<int, object>>(
+                    .UsingEntity<Dictionary<string, object>>(
                         "TypeOfTour",
-                        l => l.HasOne<Models.Type>().WithMany().HasForeignKey("TypeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_TypeOfTour_Type"),
+                        l => l.HasOne<Type>().WithMany().HasForeignKey("TypeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_TypeOfTour_Type"),
                         r => r.HasOne<Tour>().WithMany().HasForeignKey("TourId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_TypeOfTour_Tour"),
                         j =>
                         {
@@ -189,13 +181,11 @@ namespace TourTest.context
 
                             j.ToTable("TypeOfTour");
 
-                            j.IndexerProperty<int>("TourId").IsUnicode(false);
-
-                           
+                            j.IndexerProperty<string>("TypeId").HasMaxLength(50).IsUnicode(false);
                         });
             });
 
-            modelBuilder.Entity<Models.Type>(entity =>
+            modelBuilder.Entity<Type>(entity =>
             {
                 entity.ToTable("Type");
 

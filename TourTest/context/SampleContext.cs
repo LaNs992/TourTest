@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace TourTest.context
 {
-    //public class SampleContext : IDesignTimeDbContextFactory<TourContext>
-    //{
-    //    public TourContext CreateDbContext(string[] args) => new TourContext(DbOptions.Options());
-    //}
+    public class SampleContext : IDesignTimeDbContextFactory<TourContext>
+    {
+        public TourContext CreateDbContext(string[] args) => new TourContext(DbOptions.Options());
+    }
 }
 
 
