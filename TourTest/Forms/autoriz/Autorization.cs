@@ -16,23 +16,25 @@ namespace TourTest.Forms.autoriz
 {
     public partial class Autorization : Form
     {
+        public string login;
         public Autorization()
         {
             InitializeComponent();
+            
         }
-
+  
         private void buttonAuto_Click(object sender, EventArgs e)
         {
             using (var db = new TourContext(DbOptions.Options()))
             {
 
-                var login = textBoxLogin.Text;
+                login = textBoxLogin.Text;
                 var password = textBoxPassword.Text;
 
                 if (db.Users.Any(a => a.Username == login && a.Password == password))
                 {
                     var currentUser = db.Users.FirstOrDefault(a => a.Username == login && a.Password == password);
-                    TourForms ToursForm = new TourForms();
+                    TourForms ToursForm = new TourForms(login);
                     ToursForm.Show();
                     switch (currentUser.RoleId)
                     {
@@ -59,9 +61,24 @@ namespace TourTest.Forms.autoriz
         {
             profile.user = true;
 
-            TourForms ToursForm = new TourForms();
+            TourForms ToursForm = new TourForms(login);
             
             ToursForm.ShowDialog();
+        }
+
+        private void Autorization_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label5_MouseEnter(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = false;
+        }
+
+        private void label5_MouseLeave(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = true;
         }
     }
 }

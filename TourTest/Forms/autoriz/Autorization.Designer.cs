@@ -54,8 +54,10 @@
             this.textBoxPassword.Location = new System.Drawing.Point(32, 213);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(293, 37);
             this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -139,6 +141,7 @@
             this.Name = "Autorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autorization";
+            this.Load += new System.EventHandler(this.Autorization_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

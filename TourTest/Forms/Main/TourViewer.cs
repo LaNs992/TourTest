@@ -32,12 +32,12 @@ namespace TourTest.Forms.Main
             Actual.Text = tour.IsActual ? "Актуален" : "Не актуален";
             Actual.ForeColor = tour.IsActual ? Color.Green : Color.Red;
             CountTick.Text = $"Кол: {tour.TicketCount.ToString()}";
-            /*if (tour.ImagePreview != null)
-            {
-                MemoryStream image = new MemoryStream();
-                image = new MemoryStream(tour.ImagePreview);
-                pictureTour.Image = Image.FromStream(image);            
-            }*/
+            //if (tour.ImagePreview != null)
+            //{
+            //    MemoryStream image = new MemoryStream();
+            //    image = new MemoryStream(tour.ImagePreview);
+            //    pictureTour.Image = Image.FromStream(image);            
+            //}
         }
         private void buttonEdit_Click(object sender, EventArgs e)
         {

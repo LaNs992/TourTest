@@ -35,7 +35,7 @@ namespace TourTest.Forms.Main.HelperForm
             ticketsNumeric.Value = tour.TicketCount;
             isActualChecked.Checked = tour.IsActual;
             descTextBox.Text = tour.Description;
-           
+            countryComboBox.Text = tour.TourCountry;
 
             using (var db = new TourContext(DbOptions.Options()))
             {
@@ -62,6 +62,8 @@ namespace TourTest.Forms.Main.HelperForm
                 };
                 db.Tours.Add(tourero);
                 db.SaveChanges();
+                TourForms tour = new TourForms("");
+                tour.LoadControl();
             }
             this.Close();
         }

@@ -229,7 +229,7 @@
             this.buttoEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(227)))), ((int)(((byte)(232)))));
             this.buttoEdit.FlatAppearance.BorderSize = 0;
             this.buttoEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttoEdit.Location = new System.Drawing.Point(18, 340);
+            this.buttoEdit.Location = new System.Drawing.Point(19, 340);
             this.buttoEdit.Name = "buttoEdit";
             this.buttoEdit.Size = new System.Drawing.Size(371, 30);
             this.buttoEdit.TabIndex = 34;
