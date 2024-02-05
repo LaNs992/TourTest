@@ -45,6 +45,7 @@
             this.amountLabel = new System.Windows.Forms.Label();
             this.costLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.buttoEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,19 +73,20 @@
             this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(80)))), ((int)(((byte)(86)))));
             this.deleteButton.FlatAppearance.BorderSize = 0;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(19, 432);
+            this.deleteButton.Location = new System.Drawing.Point(18, 448);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(371, 30);
             this.deleteButton.TabIndex = 31;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Visible = false;
             // 
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cancelButton.FlatAppearance.BorderSize = 0;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(19, 396);
+            this.cancelButton.Location = new System.Drawing.Point(18, 412);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(371, 30);
             this.cancelButton.TabIndex = 30;
@@ -96,7 +98,7 @@
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(227)))), ((int)(((byte)(232)))));
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Location = new System.Drawing.Point(19, 360);
+            this.addButton.Location = new System.Drawing.Point(18, 376);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(371, 30);
             this.addButton.TabIndex = 29;
@@ -222,11 +224,25 @@
             this.nameLabel.TabIndex = 17;
             this.nameLabel.Text = "Название";
             // 
+            // buttoEdit
+            // 
+            this.buttoEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(227)))), ((int)(((byte)(232)))));
+            this.buttoEdit.FlatAppearance.BorderSize = 0;
+            this.buttoEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttoEdit.Location = new System.Drawing.Point(18, 340);
+            this.buttoEdit.Name = "buttoEdit";
+            this.buttoEdit.Size = new System.Drawing.Size(371, 30);
+            this.buttoEdit.TabIndex = 34;
+            this.buttoEdit.Text = "Изменить";
+            this.buttoEdit.UseVisualStyleBackColor = false;
+            this.buttoEdit.Click += new System.EventHandler(this.buttoEdit_Click);
+            // 
             // AddTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 480);
+            this.Controls.Add(this.buttoEdit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.descTextBox);
             this.Controls.Add(this.deleteButton);
@@ -272,5 +288,6 @@
         private Label amountLabel;
         private Label costLabel;
         private Label nameLabel;
+        private Button buttoEdit;
     }
 }

@@ -24,7 +24,6 @@ namespace TourTest.Models
 
         public virtual Country TourCountryNavigation { get; set; } = null!;
         public virtual ICollection<Order> Orders { get; set; }
-
         public virtual ICollection<Hotel> Hotels { get; set; }
         public virtual ICollection<Type> Types { get; set; }
     }
