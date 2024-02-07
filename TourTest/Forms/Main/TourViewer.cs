@@ -51,36 +51,36 @@ namespace TourTest.Forms.Main
 
         private void buttonEdit_Click_1(object sender, EventArgs e)
         {
-            var tourEdit = new AddTour(Tour);
-            var result = tourEdit.ShowDialog();
-            if (result == DialogResult.OK)
+            using (var db = new TourContext(DbOptions.Options()))
             {
-                using (var db = new TourContext())
+                var tourDB = db.Tours.FirstOrDefault(x => x.Id == Tour.Id);
+                var tourInfoForm = new AddTour(tourDB);
+                var result = tourInfoForm.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    var tour = db.Tours.Include(nameof(Tour.Types)).FirstOrDefault(t => t.Id == Tour.Id);
-                    if (tour != null) { return; }
-                    tour = tourEdit.Tour;
-                    tour.Types.Clear();
+                    var ids = tourInfoForm.GetTypeIdsChecked();
+                    tourDB.Types.Clear();
+                    tourDB.Types = db.Types.Where(x => ids.Contains(x.Id)).ToList();
                     db.SaveChanges();
-                    InitTour(tour);
+                    InitTour(tourDB);
+                    
                 }
-            }
-            else if (result == DialogResult.Yes)
-            {
-                if (MessageBox.Show($"Вы уверены, что хотите удалить Тур:\n\tНазвание: {Tour.Name}\n\t" +
-                    $"Цена: {Tour.Price}", "Предупреждение!",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                else if (result == DialogResult.Yes)
                 {
-                    using (var db = new TourContext())
+                    if (MessageBox.Show($"Вы уверены, что хотите удалить Тур:\n\tНазвание: {tourDB.Name}\n\t" +
+                        $"Цена: {tourDB.Price}", "Предупреждение!",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
-                        var tour = db.Tours.Include(nameof(Tour.Types)).FirstOrDefault(x => x.Id == Tour.Id);
-                        if (tour == null) { return; }
-                        db.Tours.Remove(tour);
+
+                        db.Tours.Remove(tourDB);
                         db.SaveChanges();
                         this.Hide();
+                      
                     }
+
                 }
             }
+        
         }
     }
 }

@@ -14,43 +14,46 @@ namespace TourTest.Forms.Main.HelperForm
 {
     public partial class AddTour : Form
     {
-        private readonly Tour tourEdit;
+        private  Tour tourEdit;
         public Tour Tour => tourEdit;
         public AddTour()
         {
             InitializeComponent();
+            tourEdit=new Tour();
             Text = "Добавление тура";
             addButton.Text = "Добавить";
         }
         public AddTour(Tour tour) : this()
         {   
             Text = "Изменения тура";
-         
+            addButton.Text = "Изменить";
             this.tourEdit = tour;
-            addButton.Visible = false;
             deleteButton.Visible = true;
             nameTextBox.Text = tour.Name;
-            countryComboBox.Text = tour.TicketCount.ToString();
             costTextBox.Text = tour.Price.ToString();
             ticketsNumeric.Value = tour.TicketCount;
             isActualChecked.Checked = tour.IsActual;
             descTextBox.Text = tour.Description;
-            countryComboBox.Text = tour.TourCountry;
 
-            using (var db = new TourContext(DbOptions.Options()))
+            countryComboBox.SelectedItem = countryComboBox.Items
+               .Cast<Country>()
+               .FirstOrDefault(x => x.Code == tour.TourCountry);
+
+            var ids = tour.Types.Select(x => x.Id).ToList();
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
-                countryComboBox.SelectedItem = db.Countries.FirstOrDefault(c => c.Code == tour.TourCountry);
+                if (ids.Contains(((Models.Type)checkedListBox1.Items[i]).Id))
+                {
+                    checkedListBox1.SetItemChecked(i, true);
+                }
 
-                typeComboBox.SelectedItem = db.Types.FirstOrDefault(c => c.Id == tour.Id.ToString());
             }
+            
 
         }
         private void addButton_Click(object sender, EventArgs e)
         {
-
-            using (var db = new TourContext(DbOptions.Options()))
-            {
-                Tour tourero = new Tour
+                tourEdit = new Tour
                 {
                     Name = nameTextBox.Text,
                     TourCountry = ((Country)countryComboBox.SelectedItem).Code,
@@ -60,50 +63,28 @@ namespace TourTest.Forms.Main.HelperForm
                     IsActual = isInternationalChecked.Checked,
                     IsInternational = isInternationalChecked.Checked,
                 };
-                db.Tours.Add(tourero);
-                db.SaveChanges();
-                TourForms tour = new TourForms("");
-                tour.LoadControl();
-            }
-            this.Close();
+                DialogResult=DialogResult.OK;
+                         
         }
-
+        public List<string> GetTypeIdsChecked()
+        => checkedListBox1.CheckedItems
+            .Cast<Models.Type>()
+            .Select(x => x.Id)
+            .ToList();
         private void AddTour_Load(object sender, EventArgs e)
         {
             countryComboBox.DisplayMember = nameof(Country.Name);
 
-            typeComboBox.DisplayMember = nameof(Models.Type.Name);
+            checkedListBox1.DisplayMember = nameof(Models.Type.Name);
             using (var db = new TourContext(DbOptions.Options()))
             {
                 countryComboBox.Items.AddRange(db.Countries.ToArray());
                 countryComboBox.SelectedIndex = 0;
-                typeComboBox.Items.AddRange(db.Types.ToArray());
+
+                checkedListBox1.Items.AddRange(db.Types.ToArray());
             }
         }
 
-        private void descTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttoEdit_Click(object sender, EventArgs e)
-        {
-            using (var db = new TourContext(DbOptions.Options()))
-            {
-                Tour tourero = new Tour
-                {
-                    Name = nameTextBox.Text,
-                    TourCountry = ((Country)countryComboBox.SelectedItem).Code,
-                    TicketCount = Convert.ToInt32(ticketsNumeric.Value),
-                    Description = descTextBox.Text,
-                    Price = Convert.ToInt32(costTextBox.Text),
-                    IsActual = isInternationalChecked.Checked,
-                    IsInternational = isInternationalChecked.Checked,
-                };
-                db.Tours.Update(tourero);
-                db.SaveChanges();
-            }
-            this.Close();
-        }
+     
     }
 }

@@ -26,32 +26,30 @@ namespace TourTest.Forms.Main
             LoadControl();
         }
 
-        private void TourForms_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void buttonAuto_Click(object sender, EventArgs e)
         {
             AddTour addbtn= new AddTour();
-            addbtn.ShowDialog();
+            if (addbtn.ShowDialog() == DialogResult.OK)
+            {
+                using (var db = new TourContext(DbOptions.Options()))
+                {
+                    var ids = addbtn.GetTypeIdsChecked();
+                    addbtn.Tour.Types = db.Types.Where(x => ids.Contains(x.Id)).ToList();
+                    db.Tours.Add(addbtn.Tour);
+                    db.SaveChanges();
+                    var tourInfo = new TourViewer(addbtn.Tour);
+                    tourInfo.Parent = flowLayoutPanel4;
+                }
+             }
+               
+
         }
         public void LoadControl()
         {
 
             using (var db = new TourContext(DbOptions.Options()))
             {
-                flowLayoutPanel4.Controls.Clear();
+               
                 var tours = db.Tours.Include(nameof(Tour.Types)).ToList();
                 foreach (var tour in tours)
                 {
@@ -60,6 +58,7 @@ namespace TourTest.Forms.Main
                     tourInfo.Parent = flowLayoutPanel4;
                     //tourInfo.ImageChanged += TourView_ImageChanged;
                 }
+
             }
         }
         private void TourForms_Load_1(object sender, EventArgs e)
@@ -71,40 +70,6 @@ namespace TourTest.Forms.Main
         private void Filter()
         {
             flowLayoutPanel4.Controls.Clear();
-
-
-            //if (comboBox1.SelectedItem == null) return;
-            //var selectedTypeId = ((Type)comboBox1.SelectedItem).Id;
-            //allToursSum = 0;
-            //foreach (var item in flowLayoutPanel4.Controls)
-            //{
-            //    var visible = true;
-            //    if (item is TourViewer tourInfo)
-            //    {
-            //        if (selectedTypeId != null &&
-            //            !tourInfo.Tour.Types.Any(x => x.Id == selectedTypeId))
-            //        {
-            //            visible = false;
-            //        }
-
-            //        if (isActualcheckBox.Checked && !tourInfo.Tour.IsActual)
-            //        {
-            //            visible = false;
-            //        }
-
-            //        if (!(string.IsNullOrEmpty(searchTextBox.Text) ||
-            //            tourInfo.Tour.Name.Contains(searchTextBox.Text)))
-            //        {
-            //            visible = false;
-            //        }
-            //        if (visible)
-            //        {
-            //            allToursSum += (int)(tourInfo.Tour.Price * tourInfo.Tour.TicketCount);
-            //        }
-            //        tourInfo.Visible = visible;
-            //    }
-            //}
-            //label1.Text = $"{allToursSum:C2}";
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
