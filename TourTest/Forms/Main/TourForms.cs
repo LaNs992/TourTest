@@ -18,8 +18,11 @@ namespace TourTest.Forms.Main
     public partial class TourForms : Form
     {
         public string Username;
+        public static Dictionary<Tour, int> orders;
+
         public TourForms(string Login )
         {
+            orders = new Dictionary<Tour, int>();
             Username = Login;
             InitializeComponent();
             Namelbl.Text = Username;
@@ -31,6 +34,7 @@ namespace TourTest.Forms.Main
             AddTour addbtn= new AddTour();
             if (addbtn.ShowDialog() == DialogResult.OK)
             {
+                allToursSum = 0;
                 using (var db = new TourContext(DbOptions.Options()))
                 {
                     var ids = addbtn.GetTypeIdsChecked();
@@ -39,10 +43,50 @@ namespace TourTest.Forms.Main
                     db.SaveChanges();
                     var tourInfo = new TourViewer(addbtn.Tour);
                     tourInfo.Parent = flowLayoutPanel4;
+                    tourInfo.OnImageChanged += TourInfo_OnImageChanged;
+                    tourInfo.CountOrdersChanged += TourInfo_CountOrdersChanged;
+                    tourInfo.onAddToOrder += TourInfo_onAddToOrder;
+                    tourInfo.onAddTour += TourInfo_onAddTour;
+
+                    allToursSum += (int)(tourInfo.Tour.Price * tourInfo.Tour.TicketCount);
+                    AllSumm.Text = $"{allToursSum:C2}";
                 }
-             }
+            }
                
 
+        }
+
+        private void TourInfo_OnImageChanged(Tour tour, byte[] image)
+        {
+            using (var db = new TourContext(DbOptions.Options()))
+            {
+                var tourDB = db.Tours.FirstOrDefault(x => x.Id == tour.Id);
+                tourDB.ImagePreview = image;    
+                db.SaveChanges();
+            }
+        }
+        private void TourInfo_onAddToOrder(Tour tour)
+        {
+            if (orders.TryGetValue(tour, out var count))
+            {
+                orders[tour] = ++count;
+            }
+            else
+            {
+                orders.Add(tour, 1);
+            }
+
+        }
+        private void TourInfo_onAddTour(int money)
+        {
+            allToursSum += money;
+            Moneylbl.Text = $"{allToursSum:C2}";
+
+        }
+        private void TourInfo_CountOrdersChanged(object sender, EventArgs e)
+        {
+            CountCorLbl.Text = orders.Count.ToString();
+            butOrder.Visible = orders.Count != 0;
         }
         public void LoadControl()
         {
@@ -56,7 +100,10 @@ namespace TourTest.Forms.Main
 
                     var tourInfo = new TourViewer(tour);
                     tourInfo.Parent = flowLayoutPanel4;
-                    //tourInfo.ImageChanged += TourView_ImageChanged;
+                    tourInfo.OnImageChanged += TourInfo_OnImageChanged;
+                    tourInfo.onAddToOrder += TourInfo_onAddToOrder;
+                    tourInfo.onAddTour += TourInfo_onAddTour;
+
                 }
 
             }
@@ -65,28 +112,39 @@ namespace TourTest.Forms.Main
         {
             Namelbl.Text = Username;
             LoadControl();
+
+            using (var db = new TourContext())
+                {
+                var tours = db.Tours.AsNoTracking().Include(x => x.Types).ToList();
+            //    allToursSum = 0;
+            foreach (var tour in tours)
+            {
+
+                var tourInfo = new TourViewer(tour);
+                //        tourInfo.Parent = flowLayoutPanel4;
+                //        tourInfo.OnImageChanged += TourInfo_OnImageChanged;
+                //        tourInfo.CountOrdersChanged += TourInfo_CountOrdersChanged;
+                //        tourInfo.onAddToOrder += TourInfo_onAddToOrder;
+                //        tourInfo.onAddTour += TourInfo_onAddTour;
+
+                allToursSum += (int)(tour.Price * tour.TicketCount);
+            }
+            AllSumm.Text = $"{allToursSum:C2}";
         }
+    }
         private int allToursSum = 0;
-        private void Filter()
-        {
-            flowLayoutPanel4.Controls.Clear();
-        }
-
-        private void searchTextBox_TextChanged(object sender, EventArgs e)
-        {
-            Filter();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Filter();
-        }
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
-            Hotel hotel = new Hotel(Username);
+            HotelForm hotel = new HotelForm(Username);
             hotel.Show();
             this.Close();
+        }
+
+        private void butOrder_Click(object sender, EventArgs e)
+        {
+            var orderForm = new OrderForm(orders);
+            orderForm.ShowDialog();
         }
     }
 }

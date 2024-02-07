@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace TourTest.Forms.Main.HelperForm
                     TourCountry = ((Country)countryComboBox.SelectedItem).Code,
                     TicketCount = Convert.ToInt32(ticketsNumeric.Value),
                     Description = descTextBox.Text,
-                    Price = Convert.ToInt32(costTextBox.Text),
+                    Price = decimal.Parse(costTextBox.Text),
                     IsActual = isInternationalChecked.Checked,
                     IsInternational = isInternationalChecked.Checked,
                 };
@@ -85,6 +86,18 @@ namespace TourTest.Forms.Main.HelperForm
             }
         }
 
-     
+        private void costTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void costTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

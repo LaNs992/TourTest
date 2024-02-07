@@ -157,9 +157,20 @@
             0,
             0,
             0});
+            this.ticketsNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ticketsNumeric.Name = "ticketsNumeric";
+            this.ticketsNumeric.ReadOnly = true;
             this.ticketsNumeric.Size = new System.Drawing.Size(194, 23);
             this.ticketsNumeric.TabIndex = 23;
+            this.ticketsNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // costTextBox
             // 
@@ -168,6 +179,8 @@
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(254, 30);
             this.costTextBox.TabIndex = 22;
+            this.costTextBox.TextChanged += new System.EventHandler(this.costTextBox_TextChanged);
+            this.costTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costTextBox_KeyPress);
             // 
             // nameTextBox
             // 
@@ -249,6 +262,7 @@
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.nameLabel);
             this.Name = "AddTour";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddTour";
             this.Load += new System.EventHandler(this.AddTour_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ticketsNumeric)).EndInit();
