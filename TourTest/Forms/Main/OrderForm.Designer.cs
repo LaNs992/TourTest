@@ -34,8 +34,10 @@
             this.butZakaz = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.seil = new System.Windows.Forms.Label();
             this.PeiceLbl = new System.Windows.Forms.Label();
+            this.UserLbl = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -60,15 +62,18 @@
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Пушкино",
-            "Киров"});
+            "Pushkino",
+            "Kirov",
+            "Moscow",
+            "SPB"});
             this.comboBox.Location = new System.Drawing.Point(12, 387);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(242, 23);
-            this.comboBox.TabIndex = 0;
+            this.comboBox.TabIndex = 1;
             // 
             // butZakaz
             // 
+            this.butZakaz.Enabled = false;
             this.butZakaz.Location = new System.Drawing.Point(12, 416);
             this.butZakaz.Name = "butZakaz";
             this.butZakaz.Size = new System.Drawing.Size(156, 23);
@@ -97,16 +102,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Сумма скидки:";
             // 
-            // seil
-            // 
-            this.seil.AutoSize = true;
-            this.seil.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.seil.Location = new System.Drawing.Point(615, 418);
-            this.seil.Name = "seil";
-            this.seil.Size = new System.Drawing.Size(19, 21);
-            this.seil.TabIndex = 6;
-            this.seil.Text = "0";
-            // 
             // PeiceLbl
             // 
             this.PeiceLbl.AutoSize = true;
@@ -117,13 +112,41 @@
             this.PeiceLbl.TabIndex = 7;
             this.PeiceLbl.Text = "0";
             // 
+            // UserLbl
+            // 
+            this.UserLbl.AutoSize = true;
+            this.UserLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UserLbl.Location = new System.Drawing.Point(11, 9);
+            this.UserLbl.Name = "UserLbl";
+            this.UserLbl.Size = new System.Drawing.Size(109, 21);
+            this.UserLbl.TabIndex = 8;
+            this.UserLbl.Text = "Пользователь";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(615, 418);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown1.TabIndex = 9;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 450);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.UserLbl);
             this.Controls.Add(this.PeiceLbl);
-            this.Controls.Add(this.seil);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -133,6 +156,7 @@
             this.Name = "OrderForm";
             this.Text = "OrderForm";
             this.Load += new System.EventHandler(this.OrderForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,7 +170,8 @@
         private Button butZakaz;
         private Label label2;
         private Label label3;
-        private Label seil;
         private Label PeiceLbl;
+        private Label UserLbl;
+        private NumericUpDown numericUpDown1;
     }
 }

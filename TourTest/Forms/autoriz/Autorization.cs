@@ -20,7 +20,6 @@ namespace TourTest.Forms.autoriz
         public Autorization()
         {
             InitializeComponent();
-            
         }
   
         private void buttonAuto_Click(object sender, EventArgs e)
@@ -65,19 +64,6 @@ namespace TourTest.Forms.autoriz
             ToursForm.ShowDialog();
         }
 
-        private void Autorization_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label5_MouseEnter(object sender, EventArgs e)
-        {
-            textBoxPassword.UseSystemPasswordChar = false;
-        }
-
-        private void label5_MouseLeave(object sender, EventArgs e)
-        {
-            textBoxPassword.UseSystemPasswordChar = true;
-        }
+        
     }
 }

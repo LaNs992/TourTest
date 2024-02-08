@@ -76,7 +76,6 @@ namespace TourTest.Forms.Main.HelperForm
             .ToList();
         private void AddTour_Load(object sender, EventArgs e)
         {
-            deleteButton.Enabled = false;
         }
 
         private void costTextBox_TextChanged(object sender, EventArgs e)
@@ -128,6 +127,11 @@ namespace TourTest.Forms.Main.HelperForm
         private void descTextBox_TextChanged(object sender, EventArgs e)
         {
             tourEdit.Description= descTextBox.Text;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

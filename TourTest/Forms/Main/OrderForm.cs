@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using TourTest.context;
 using TourTest.Forms.Main.HelperForm;
 using TourTest.Models;
+using TourTest.Models.profiles;
 
 namespace TourTest.Forms.Main
 {
@@ -19,10 +20,14 @@ namespace TourTest.Forms.Main
         private Dictionary<Tour, int> orders;
         public decimal sum = 0;
         private int discount = 0;
-        public OrderForm(Dictionary<Tour, int> orders)
+        public string Username;
+
+        public OrderForm(Dictionary<Tour, int> orders, string login)
         {
             InitializeComponent();
             this.orders = orders;
+            Username = login;
+            UserLbl.Text = Username;
             //var user = WorkToUser.User;
             //labelFIO.Text = $"{user.Surname} {user.Name} {user?.Patronymic}";
 
@@ -36,12 +41,12 @@ namespace TourTest.Forms.Main
                 sum += item.Price * orderView.Count;
             }
             PeiceLbl.Text = $"{sum:C2}";
-
+            Roles();
             using (var db = new TourContext())
             {
                 comboBox.DisplayMember = "Title";
                 //comboBox.Items.AddRange(db.ReceivingPoints.ToArray());
-                //comboBox.SelectedIndex = 0;
+                comboBox.SelectedIndex = 0;
             }
         }
         private void UpdateSum()
@@ -64,31 +69,52 @@ namespace TourTest.Forms.Main
         {
 
         }
+        public void Roles()
+        {
+            if (profile.user == 2 || profile.user == 1)
+            {
+                butZakaz.Enabled = true;
 
+            }
+            else
+            {
+                butZakaz.Enabled = false;
+
+            }
+
+        }
         private void butZakaz_Click(object sender, EventArgs e)
         {
 
             var rnd = new Random();
-            var order = new Order()
+            var code = rnd.Next(100, 1000);
+            foreach (var item in orders.Keys)
             {
-                Cost = (int)sum,
-                PickUpCode = rnd.Next(100, 1000),
-                PickUpPoint = comboBox.Text,
-                TourId=rnd.Next(100, 1000),
-            };
-            using (var db = new TourContext(DbOptions.Options()))
-            {
-                
-                db.Orders.Add(order);
-                db.SaveChanges();
+                var orderViwer = new OrderViewer(item, orders[item]);
+                var order = new Order()
+                {
+
+                    Cost = (int)sum,
+                    PickUpCode = code,
+                    Discount = (double)numericUpDown1.Value,
+                    PickUpPoint = comboBox.Text,
+                    TourId = item.Id,
+                    User = Username
+
+                };
+                using (var db = new TourContext(DbOptions.Options()))
+                {
+
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                    this.Close();
+                }
                 MessageBox.Show("Вы успешно оформили заказ!");
-                this.Close();
+
             }
         }
 
-        private void OrderForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
+      

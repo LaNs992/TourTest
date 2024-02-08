@@ -33,7 +33,7 @@ namespace TourTest.context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-URICGBM\\SQLEXPRESS;Database=Tour;Trusted_Connection=true");
+                optionsBuilder.UseSqlServer("Server=gogs.wsr.ru;User ID=2053-20;Password=TzzQx26i;Initial Catalog=TourBazhin");
             }
         }
 
@@ -113,7 +113,7 @@ namespace TourTest.context
                 entity.HasKey(e => e.IdOrder);
 
                 entity.Property(e => e.IdOrder)
-                    .ValueGeneratedNever()
+                
                     .HasColumnName("ID_Order");
 
                 entity.Property(e => e.DateOrder).HasColumnName("Date_Order");
@@ -133,6 +133,8 @@ namespace TourTest.context
                     .HasForeignKey(d => d.TourId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Orders_Tour");
+
+                entity.Property(e => e.User).HasColumnName("UserId");
             });
 
             modelBuilder.Entity<Role>(entity =>

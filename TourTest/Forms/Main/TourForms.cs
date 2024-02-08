@@ -20,7 +20,7 @@ namespace TourTest.Forms.Main
     {
         public string Username;
         public static Dictionary<Tour, int> orders;
-
+        public int count;
         public TourForms(string Login )
         {
             orders = new Dictionary<Tour, int>();
@@ -116,6 +116,8 @@ namespace TourTest.Forms.Main
                     
                     var tourInfo = new TourViewer(tour);
                     tourInfo.Parent = flowLayoutPanel4;
+                    count++;
+                    Count.Text = count.ToString();
                     tourInfo.OnImageChanged += TourInfo_OnImageChanged;
                     tourInfo.onAddToOrder += TourInfo_onAddToOrder;
                     tourInfo.onAddTour += TourInfo_onAddTour;
@@ -166,6 +168,7 @@ namespace TourTest.Forms.Main
             if (profile.user == 2 || profile.user ==1)
             {
                 buttonAuto.Enabled= true;
+                Zakaz.Enabled= true;
 
             }else 
             {
@@ -187,14 +190,14 @@ namespace TourTest.Forms.Main
             {
 
                 var tourInfo = new TourViewer(tour);
-                //        tourInfo.Parent = flowLayoutPanel4;
-                //        tourInfo.OnImageChanged += TourInfo_OnImageChanged;
-                //        tourInfo.CountOrdersChanged += TourInfo_CountOrdersChanged;
-                //        tourInfo.onAddToOrder += TourInfo_onAddToOrder;
-                //        tourInfo.onAddTour += TourInfo_onAddTour;
+                    //        tourInfo.Parent = flowLayoutPanel4;
+                    //        tourInfo.OnImageChanged += TourInfo_OnImageChanged;
+                    //        tourInfo.CountOrdersChanged += TourInfo_CountOrdersChanged;
+                    //        tourInfo.onAddToOrder += TourInfo_onAddToOrder;
+                    //        tourInfo.onAddTour += TourInfo_onAddTour;
 
-                allToursSum += (int)(tour.Price * tour.TicketCount);
-            }
+                    allToursSum += (int)(tour.Price * tour.TicketCount);
+                }
             AllSumm.Text = $"{allToursSum:C2}";
         }
     }
@@ -209,7 +212,7 @@ namespace TourTest.Forms.Main
 
         private void butOrder_Click(object sender, EventArgs e)
         {
-            var orderForm = new OrderForm(orders);
+            var orderForm = new OrderForm(orders,Username);
             orderForm.ShowDialog();
         }
 
@@ -221,6 +224,22 @@ namespace TourTest.Forms.Main
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Filter();
+        }
+
+        private void isActualcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Filter();
+        }
+
+        private void Zakaz_Click(object sender, EventArgs e)
+        {
+            ZakazForm zakaz = new ZakazForm(Username);
+            zakaz.ShowDialog();
+        }
+
+        private void Namelbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
