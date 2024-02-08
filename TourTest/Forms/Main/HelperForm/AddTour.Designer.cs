@@ -35,7 +35,6 @@
             this.addButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.isActualChecked = new System.Windows.Forms.CheckBox();
-            this.isInternationalChecked = new System.Windows.Forms.CheckBox();
             this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.ticketsNumeric = new System.Windows.Forms.NumericUpDown();
             this.costTextBox = new System.Windows.Forms.TextBox();
@@ -65,6 +64,7 @@
             this.descTextBox.Name = "descTextBox";
             this.descTextBox.Size = new System.Drawing.Size(254, 69);
             this.descTextBox.TabIndex = 32;
+            this.descTextBox.TextChanged += new System.EventHandler(this.descTextBox_TextChanged);
             // 
             // deleteButton
             // 
@@ -72,7 +72,7 @@
             this.deleteButton.DialogResult = System.Windows.Forms.DialogResult.No;
             this.deleteButton.FlatAppearance.BorderSize = 0;
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.Location = new System.Drawing.Point(18, 504);
+            this.deleteButton.Location = new System.Drawing.Point(18, 473);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(371, 30);
             this.deleteButton.TabIndex = 31;
@@ -86,7 +86,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderSize = 0;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Location = new System.Drawing.Point(18, 468);
+            this.cancelButton.Location = new System.Drawing.Point(18, 437);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(371, 30);
             this.cancelButton.TabIndex = 30;
@@ -99,13 +99,12 @@
             this.addButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Location = new System.Drawing.Point(18, 432);
+            this.addButton.Location = new System.Drawing.Point(18, 401);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(371, 30);
             this.addButton.TabIndex = 29;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // label2
             // 
@@ -121,25 +120,16 @@
             // 
             this.isActualChecked.AutoSize = true;
             this.isActualChecked.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.isActualChecked.Checked = true;
+            this.isActualChecked.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isActualChecked.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.isActualChecked.Location = new System.Drawing.Point(225, 364);
+            this.isActualChecked.Location = new System.Drawing.Point(269, 360);
             this.isActualChecked.Name = "isActualChecked";
             this.isActualChecked.Size = new System.Drawing.Size(101, 27);
             this.isActualChecked.TabIndex = 26;
             this.isActualChecked.Text = "Актуален";
             this.isActualChecked.UseVisualStyleBackColor = true;
-            // 
-            // isInternationalChecked
-            // 
-            this.isInternationalChecked.AutoSize = true;
-            this.isInternationalChecked.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.isInternationalChecked.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.isInternationalChecked.Location = new System.Drawing.Point(62, 364);
-            this.isInternationalChecked.Name = "isInternationalChecked";
-            this.isInternationalChecked.Size = new System.Drawing.Size(157, 27);
-            this.isInternationalChecked.TabIndex = 25;
-            this.isInternationalChecked.Text = "Международный";
-            this.isInternationalChecked.UseVisualStyleBackColor = true;
+            this.isActualChecked.CheckedChanged += new System.EventHandler(this.isActualChecked_CheckedChanged);
             // 
             // countryComboBox
             // 
@@ -148,6 +138,7 @@
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(194, 23);
             this.countryComboBox.TabIndex = 24;
+            this.countryComboBox.SelectedIndexChanged += new System.EventHandler(this.countryComboBox_SelectedIndexChanged);
             // 
             // ticketsNumeric
             // 
@@ -171,6 +162,7 @@
             0,
             0,
             0});
+            this.ticketsNumeric.ValueChanged += new System.EventHandler(this.ticketsNumeric_ValueChanged);
             // 
             // costTextBox
             // 
@@ -189,6 +181,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(254, 30);
             this.nameTextBox.TabIndex = 21;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // label1
             // 
@@ -243,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 540);
+            this.ClientSize = new System.Drawing.Size(402, 522);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.descTextBox);
@@ -252,7 +245,6 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.isActualChecked);
-            this.Controls.Add(this.isInternationalChecked);
             this.Controls.Add(this.countryComboBox);
             this.Controls.Add(this.ticketsNumeric);
             this.Controls.Add(this.costTextBox);
@@ -280,7 +272,6 @@
         private Button addButton;
         private Label label2;
         private CheckBox isActualChecked;
-        private CheckBox isInternationalChecked;
         private ComboBox countryComboBox;
         private NumericUpDown ticketsNumeric;
         private TextBox costTextBox;

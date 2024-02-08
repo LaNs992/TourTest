@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using TourTest.context;
 using TourTest.Forms.Main.HelperForm;
 using TourTest.Models;
+using TourTest.Models.profiles;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TourTest.Forms.Main
@@ -26,7 +27,7 @@ namespace TourTest.Forms.Main
             Username= login;
             InitializeComponent();
             UserN.Text = Username;
-           
+            Roles();
             initDatagrid();
         }
 
@@ -96,7 +97,22 @@ namespace TourTest.Forms.Main
                 }
             }
         }
+        public void Roles()
+        {
+            if (profile.user == 2 || profile.user == 1)
+            {
+                butAdd.Enabled = true;
+                butDel.Enabled = true;
+                butEdit.Enabled = true;
+            }
+            else
+            {
+                butAdd.Enabled = false;
+                butDel.Enabled = false;
+                butEdit.Enabled = false;
 
+            }
+        }
         private void butDel_Click(object sender, EventArgs e)
         {
             var hotel = (Hotel)dataGridView1.SelectedRows[0].DataBoundItem;

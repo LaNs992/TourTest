@@ -56,6 +56,7 @@
             // buttonEdit
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonEdit.Enabled = false;
             this.buttonEdit.FlatAppearance.BorderSize = 0;
             this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEdit.Font = new System.Drawing.Font("Bauhaus 93", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -71,6 +72,7 @@
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonAdd.Enabled = false;
             this.buttonAdd.FlatAppearance.BorderSize = 0;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Bauhaus 93", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -88,7 +90,7 @@
             this.Actual.AutoSize = true;
             this.Actual.BackColor = System.Drawing.Color.Transparent;
             this.Actual.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Actual.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Actual.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Actual.Location = new System.Drawing.Point(16, 222);
             this.Actual.Name = "Actual";
             this.Actual.Size = new System.Drawing.Size(37, 19);
@@ -100,7 +102,7 @@
             this.NameLb.AutoSize = true;
             this.NameLb.BackColor = System.Drawing.Color.Transparent;
             this.NameLb.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NameLb.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.NameLb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.NameLb.Location = new System.Drawing.Point(44, 7);
             this.NameLb.Name = "NameLb";
             this.NameLb.Size = new System.Drawing.Size(37, 19);
@@ -112,7 +114,7 @@
             this.CountTick.AutoSize = true;
             this.CountTick.BackColor = System.Drawing.Color.Transparent;
             this.CountTick.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CountTick.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CountTick.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CountTick.Location = new System.Drawing.Point(159, 222);
             this.CountTick.Name = "CountTick";
             this.CountTick.Size = new System.Drawing.Size(37, 19);
@@ -124,7 +126,7 @@
             this.Price.AutoSize = true;
             this.Price.BackColor = System.Drawing.Color.Transparent;
             this.Price.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Price.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Price.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Price.Location = new System.Drawing.Point(71, 185);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(50, 20);
@@ -141,7 +143,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(184, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(184, 26);
             // 
             // toolStripMenuItem1
             // 

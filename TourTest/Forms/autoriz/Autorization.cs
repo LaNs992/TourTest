@@ -35,19 +35,20 @@ namespace TourTest.Forms.autoriz
                 {
                     var currentUser = db.Users.FirstOrDefault(a => a.Username == login && a.Password == password);
                     TourForms ToursForm = new TourForms(login);
-                    ToursForm.Show();
+                   
                     switch (currentUser.RoleId)
                     {
                         case 1:
-                            profile.admin = true;
+                            profile.user = 1;
                             break;
                         case 2:
-                            profile.manager = true;
+                            profile.user = 2;
                             break;
                         case 3:
-                            profile.user = true;
+                            profile.user = 3;
                             break;
                     }
+                    ToursForm.Show();
 
                 }
                 else
@@ -59,8 +60,6 @@ namespace TourTest.Forms.autoriz
 
         private void label3_Click(object sender, EventArgs e)
         {
-            profile.user = true;
-
             TourForms ToursForm = new TourForms(login);
             
             ToursForm.ShowDialog();

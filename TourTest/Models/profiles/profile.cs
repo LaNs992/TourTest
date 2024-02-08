@@ -9,10 +9,8 @@ namespace TourTest.Models.profiles
     public class profile
 
     {
-        public static bool admin = false;
+        public static int user = 0;
 
-        public static bool manager = false;
-
-        public static bool user = false;
+       
     }
 }

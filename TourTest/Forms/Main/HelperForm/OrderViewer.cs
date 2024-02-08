@@ -28,6 +28,7 @@ namespace TourTest.Forms.Main.HelperForm
             Countrylbl.Text = Tour.TourCountry.ToString();
             Pricelbl.Text = $"Цена {Tour.Price:C2}";
             countlbl.Text = $"Кол-во билетов: {Tour.TicketCount}";
+            numericUpDown1.Maximum=Tour.TicketCount;
             numericUpDown1.Value = count;
             listBox1.DisplayMember = "Name";
             listBox1.Items.AddRange(Tour.Types.ToArray());
@@ -39,7 +40,6 @@ namespace TourTest.Forms.Main.HelperForm
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-
             Count = (int)numericUpDown1.Value;
             ChangeCount?.Invoke();
         }

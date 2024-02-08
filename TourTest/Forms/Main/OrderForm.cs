@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace TourTest.Forms.Main
     public partial class OrderForm : Form
     {
         private Dictionary<Tour, int> orders;
-        private decimal sum = 0;
+        public decimal sum = 0;
         private int discount = 0;
         public OrderForm(Dictionary<Tour, int> orders)
         {
@@ -67,6 +68,22 @@ namespace TourTest.Forms.Main
         private void butZakaz_Click(object sender, EventArgs e)
         {
 
+            var rnd = new Random();
+            var order = new Order()
+            {
+                Cost = (int)sum,
+                PickUpCode = rnd.Next(100, 1000),
+                PickUpPoint = comboBox.Text,
+                TourId=rnd.Next(100, 1000),
+            };
+            using (var db = new TourContext(DbOptions.Options()))
+            {
+                
+                db.Orders.Add(order);
+                db.SaveChanges();
+                MessageBox.Show("Вы успешно оформили заказ!");
+                this.Close();
+            }
         }
 
         private void OrderForm_Load_1(object sender, EventArgs e)

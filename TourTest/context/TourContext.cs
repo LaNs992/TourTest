@@ -198,9 +198,9 @@ namespace TourTest.context
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.Username);
+                entity.HasKey(e => e.id);
 
-                entity.Property(e => e.Username)
+                entity.Property(e => e.id)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 

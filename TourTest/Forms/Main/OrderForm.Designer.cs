@@ -41,7 +41,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 34);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(11, 34);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(966, 314);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -59,16 +59,19 @@
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "Пушкино",
+            "Киров"});
             this.comboBox.Location = new System.Drawing.Point(12, 387);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(242, 23);
-            this.comboBox.TabIndex = 1;
+            this.comboBox.TabIndex = 0;
             // 
             // butZakaz
             // 
             this.butZakaz.Location = new System.Drawing.Point(12, 416);
             this.butZakaz.Name = "butZakaz";
-            this.butZakaz.Size = new System.Drawing.Size(141, 23);
+            this.butZakaz.Size = new System.Drawing.Size(156, 23);
             this.butZakaz.TabIndex = 2;
             this.butZakaz.Text = "Оформить заказ";
             this.butZakaz.UseVisualStyleBackColor = true;

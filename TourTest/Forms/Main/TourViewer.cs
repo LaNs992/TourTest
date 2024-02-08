@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using TourTest.context;
 using TourTest.Forms.Main.HelperForm;
 using TourTest.Models;
+using TourTest.Models.profiles;
 
 namespace TourTest.Forms.Main
 {
@@ -31,6 +32,7 @@ namespace TourTest.Forms.Main
         public Tour Tour => tourView;
         private void InitTour(Tour tour)
         {
+            Roles();
            NameLb.Text = tour.Name;
            Price.Text = tour.Price.ToString("C2",CultureInfo.GetCultureInfo("ru-RU"));
             Actual.Text = tour.IsActual ? "Актуален" : "Не актуален";
@@ -66,7 +68,7 @@ namespace TourTest.Forms.Main
             using (var db = new TourContext(DbOptions.Options()))
             {
                 var tourDB = db.Tours.Include(x=>x.Types).FirstOrDefault(x => x.Id == Tour.Id);
-                
+               
                 var tourInfoForm = new AddTour(tourDB);
                 var result = tourInfoForm.ShowDialog();
                 if (result == DialogResult.OK)
@@ -78,16 +80,19 @@ namespace TourTest.Forms.Main
                     InitTour(tourDB);
                     onAddTour?.Invoke((int)tourDB.Price * tourDB.TicketCount);
                 }
-                else if (result == DialogResult.Yes)
+                else if (result == DialogResult.No)
                 {
                     if (MessageBox.Show($"Вы уверены, что хотите удалить Тур:\n\tНазвание: {tourDB.Name}\n\t" +
                         $"Цена: {tourDB.Price}", "Предупреждение!",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
 
-                        db.Tours.Remove(tourDB);
-                        db.SaveChanges();
-                        this.Hide();
+                            db.Tours.Remove(tourDB);
+                            db.SaveChanges();
+                            this.Hide();
+                        
+
+
                         onAddTour?.Invoke(-((int)tourDB.Price * tourDB.TicketCount));
 
                     }
@@ -96,8 +101,21 @@ namespace TourTest.Forms.Main
             }
         
         }
+        public void Roles()
+        {
+            if (profile.user == 2 || profile.user == 1)
+            {
+                buttonEdit.Enabled = true;
+                buttonAdd.Enabled = true;
+            }
+            else
+            {
+                buttonEdit.Enabled = false;
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+            }
+        }
+
+            private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {

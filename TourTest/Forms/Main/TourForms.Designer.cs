@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.butOrder = new System.Windows.Forms.Button();
             this.CountCorLbl = new System.Windows.Forms.Label();
             this.Moneylbl = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.butOrder);
             this.panel1.Controls.Add(this.CountCorLbl);
             this.panel1.Controls.Add(this.Moneylbl);
@@ -66,6 +68,17 @@
             this.panel1.Size = new System.Drawing.Size(754, 160);
             this.panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(432, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 19);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Общая сумма";
+            // 
             // butOrder
             // 
             this.butOrder.BackColor = System.Drawing.Color.RoyalBlue;
@@ -73,7 +86,7 @@
             this.butOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butOrder.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.butOrder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.butOrder.Location = new System.Drawing.Point(279, 108);
+            this.butOrder.Location = new System.Drawing.Point(293, 108);
             this.butOrder.Name = "butOrder";
             this.butOrder.Size = new System.Drawing.Size(117, 33);
             this.butOrder.TabIndex = 14;
@@ -85,8 +98,8 @@
             // 
             this.CountCorLbl.AutoSize = true;
             this.CountCorLbl.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CountCorLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CountCorLbl.Location = new System.Drawing.Point(279, 79);
+            this.CountCorLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CountCorLbl.Location = new System.Drawing.Point(293, 80);
             this.CountCorLbl.Name = "CountCorLbl";
             this.CountCorLbl.Size = new System.Drawing.Size(99, 19);
             this.CountCorLbl.TabIndex = 13;
@@ -96,12 +109,13 @@
             // 
             this.Moneylbl.AutoSize = true;
             this.Moneylbl.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Moneylbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Moneylbl.Location = new System.Drawing.Point(279, 51);
+            this.Moneylbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Moneylbl.Location = new System.Drawing.Point(293, 55);
             this.Moneylbl.Name = "Moneylbl";
             this.Moneylbl.Size = new System.Drawing.Size(117, 19);
             this.Moneylbl.TabIndex = 12;
             this.Moneylbl.Text = "Цена заказа:";
+            this.Moneylbl.Visible = false;
             // 
             // button1
             // 
@@ -110,7 +124,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(560, 51);
+            this.button1.Location = new System.Drawing.Point(416, 108);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 33);
             this.button1.TabIndex = 11;
@@ -122,8 +136,8 @@
             // 
             this.AllSumm.AutoSize = true;
             this.AllSumm.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AllSumm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AllSumm.Location = new System.Drawing.Point(560, 18);
+            this.AllSumm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AllSumm.Location = new System.Drawing.Point(571, 79);
             this.AllSumm.Name = "AllSumm";
             this.AllSumm.Size = new System.Drawing.Size(108, 19);
             this.AllSumm.TabIndex = 10;
@@ -133,7 +147,7 @@
             // 
             this.Namelbl.AutoSize = true;
             this.Namelbl.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Namelbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Namelbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Namelbl.Location = new System.Drawing.Point(12, 9);
             this.Namelbl.Name = "Namelbl";
             this.Namelbl.Size = new System.Drawing.Size(117, 19);
@@ -143,11 +157,12 @@
             // buttonAuto
             // 
             this.buttonAuto.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonAuto.Enabled = false;
             this.buttonAuto.FlatAppearance.BorderSize = 0;
             this.buttonAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAuto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonAuto.Location = new System.Drawing.Point(560, 90);
+            this.buttonAuto.Location = new System.Drawing.Point(560, 108);
             this.buttonAuto.Name = "buttonAuto";
             this.buttonAuto.Size = new System.Drawing.Size(138, 33);
             this.buttonAuto.TabIndex = 8;
@@ -160,7 +175,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Bauhaus 93", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(313, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 30);
@@ -172,7 +187,7 @@
             this.isActualcheckBox.AutoSize = true;
             this.isActualcheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.isActualcheckBox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.isActualcheckBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.isActualcheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.isActualcheckBox.Location = new System.Drawing.Point(12, 108);
             this.isActualcheckBox.Name = "isActualcheckBox";
             this.isActualcheckBox.Size = new System.Drawing.Size(226, 23);
@@ -182,17 +197,19 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(83, 80);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(155, 22);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.searchLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.searchLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.searchLabel.Location = new System.Drawing.Point(14, 51);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(63, 19);
@@ -201,11 +218,13 @@
             // 
             // searchTextBox
             // 
+            this.searchTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.searchTextBox.Location = new System.Drawing.Point(83, 52);
             this.searchTextBox.Multiline = true;
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(155, 22);
             this.searchTextBox.TabIndex = 0;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // flowLayoutPanel4
             // 
@@ -220,6 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::TourTest.Properties.Resources._2d3d5c_33283e_1920_1080;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(754, 683);
             this.Controls.Add(this.flowLayoutPanel4);
@@ -252,5 +272,6 @@
         private Label CountCorLbl;
         private Label Moneylbl;
         private Button butOrder;
+        private Label label1;
     }
 }

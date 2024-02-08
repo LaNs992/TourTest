@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -23,6 +24,17 @@ namespace TourTest.Forms.Main.HelperForm
             tourEdit=new Tour();
             Text = "Добавление тура";
             addButton.Text = "Добавить";
+
+            countryComboBox.DisplayMember = nameof(Country.Code);
+
+            checkedListBox1.DisplayMember = nameof(Models.Type.Name);
+            using (var db = new TourContext(DbOptions.Options()))
+            {
+                countryComboBox.Items.AddRange(db.Countries.ToArray());
+                countryComboBox.SelectedIndex = 0;
+
+                checkedListBox1.Items.AddRange(db.Types.ToArray());
+            }
         }
         public AddTour(Tour tour) : this()
         {   
@@ -45,28 +57,18 @@ namespace TourTest.Forms.Main.HelperForm
             {
                 if (ids.Contains(((Models.Type)checkedListBox1.Items[i]).Id))
                 {
+                    
                     checkedListBox1.SetItemChecked(i, true);
+                   
+                    
                 }
+                if (ids == null) { deleteButton.Enabled = true; }
 
             }
             
 
         }
-        private void addButton_Click(object sender, EventArgs e)
-        {
-                tourEdit = new Tour
-                {
-                    Name = nameTextBox.Text,
-                    TourCountry = ((Country)countryComboBox.SelectedItem).Code,
-                    TicketCount = Convert.ToInt32(ticketsNumeric.Value),
-                    Description = descTextBox.Text,
-                    Price = decimal.Parse(costTextBox.Text),
-                    IsActual = isInternationalChecked.Checked,
-                    IsInternational = isInternationalChecked.Checked,
-                };
-                DialogResult=DialogResult.OK;
-                         
-        }
+        
         public List<string> GetTypeIdsChecked()
         => checkedListBox1.CheckedItems
             .Cast<Models.Type>()
@@ -74,23 +76,23 @@ namespace TourTest.Forms.Main.HelperForm
             .ToList();
         private void AddTour_Load(object sender, EventArgs e)
         {
-            countryComboBox.DisplayMember = nameof(Country.Name);
-
-            checkedListBox1.DisplayMember = nameof(Models.Type.Name);
-            using (var db = new TourContext(DbOptions.Options()))
-            {
-                countryComboBox.Items.AddRange(db.Countries.ToArray());
-                countryComboBox.SelectedIndex = 0;
-
-                checkedListBox1.Items.AddRange(db.Types.ToArray());
-            }
+            deleteButton.Enabled = false;
         }
 
         private void costTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            if (decimal.TryParse(costTextBox.Text.Trim(), out decimal price) && price > 0)
+            {
+                tourEdit.Price = price;
+            }
+            ValidateTour();
         }
-
+        private void ValidateTour()
+        {
+            addButton.Enabled =
+                !string.IsNullOrWhiteSpace(tourEdit.Name) &&
+                 decimal.TryParse(costTextBox.Text.ToString(), out decimal price);
+        }
         private void costTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -98,6 +100,34 @@ namespace TourTest.Forms.Main.HelperForm
             {
                 e.Handled = true;
             }
+        }
+
+        private void isActualChecked_CheckedChanged(object sender, EventArgs e)
+        {
+            tourEdit.IsActual = isActualChecked.Checked;
+
+        }
+
+        private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tourEdit.TourCountry = ((Country)countryComboBox.SelectedItem).Code;
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            tourEdit.Name = nameTextBox.Text;
+            ValidateTour();
+        }
+
+        private void ticketsNumeric_ValueChanged(object sender, EventArgs e)
+        {
+
+            tourEdit.TicketCount = (int)ticketsNumeric.Value;
+        }
+
+        private void descTextBox_TextChanged(object sender, EventArgs e)
+        {
+            tourEdit.Description= descTextBox.Text;
         }
     }
 }
