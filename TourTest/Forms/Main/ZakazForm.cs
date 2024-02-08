@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,19 +46,23 @@ namespace TourTest.Forms.Main
                 //var pageLength = (int)Math.Ceiling((float)count / sizePage);
 
 
-                switch (comboBox1.SelectedIndex)
-                {
-                    case 0:
-                        dataGridView1.Rows.Clear();
-                        break;
-                    case 1:
+            //    switch (comboBox1.SelectedIndex)
+            //    {
+            //        case 0:
+            //            DataView dv = table.DefaultView;
+            //            dv.RowFilter = "FirstName LIKE '" + txtSearch.Text + "%'";
+            //            dataGridView1.DataSource = dv;
+            //            break;
+            //        case 1:
+            //            DataView dv = table.DefaultView;
+            //            dv.RowFilter = "FirstName LIKE '" + txtSearch.Text + "%'";
+            //            dataGridView1.DataSource = dv;
 
-
-                        break;
-                    case 2:
+            //            break;
+            //        case 2:
                        
-                        break;
-                }
+            //            break;
+            //    }
             }
 
         }
