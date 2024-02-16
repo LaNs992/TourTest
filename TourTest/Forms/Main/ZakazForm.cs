@@ -43,33 +43,68 @@ namespace TourTest.Forms.Main
 
                 var count = db.Hotels.Count();
 
-                //var pageLength = (int)Math.Ceiling((float)count / sizePage);
-
-
-            //    switch (comboBox1.SelectedIndex)
-            //    {
-            //        case 0:
-            //            DataView dv = table.DefaultView;
-            //            dv.RowFilter = "FirstName LIKE '" + txtSearch.Text + "%'";
-            //            dataGridView1.DataSource = dv;
-            //            break;
-            //        case 1:
-            //            DataView dv = table.DefaultView;
-            //            dv.RowFilter = "FirstName LIKE '" + txtSearch.Text + "%'";
-            //            dataGridView1.DataSource = dv;
-
-            //            break;
-            //        case 2:
-                       
-            //            break;
-            //    }
+                
+               
             }
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            initDatagrid();
+            if (comboBox1.Text == "Все")
+            {
+                initDatagrid();
+            }
+            else
+            if (comboBox1.Text != "15") {
+                dataGridView1.DataSource = null;
+            
+                using (var db = new TourContext(DbOptions.Options()))
+                {
+                    dataGridView1.DataSource = db.Orders.Select(x => new Models.Order
+                    {
+                        IdOrder = x.IdOrder,
+                        User = x.User,
+                        DateOrder = x.DateOrder,
+                        TourId = x.TourId,
+                        Cost = x.Cost,
+                        Discount = x.Discount,
+                        PickUpCode = x.PickUpCode,
+                        PickUpPoint = x.PickUpPoint,
+
+                    }).Where(x => x.Discount == 15).ToList();
+
+                    var count = db.Hotels.Count();
+                };
+                 
+                
+            }
+            if (comboBox1.Text == "0-10%")
+            {
+                dataGridView1.DataSource = null;
+
+                using (var db = new TourContext(DbOptions.Options()))
+                {
+                    dataGridView1.DataSource = db.Orders.Select(x => new Models.Order
+                    {
+                        IdOrder = x.IdOrder,
+                        User = x.User,
+                        DateOrder = x.DateOrder,
+                        TourId = x.TourId,
+                        Cost = x.Cost,
+                        Discount = x.Discount,
+                        PickUpCode = x.PickUpCode,
+                        PickUpPoint = x.PickUpPoint,
+
+                    }).Where(x => x.Discount <= 10).ToList();
+
+                    var count = db.Hotels.Count();
+                };
+
+
+
+            }
+
         }
     }
 }

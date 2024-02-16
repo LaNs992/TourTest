@@ -37,6 +37,7 @@
             this.countlbl = new System.Windows.Forms.Label();
             this.Actuallbl = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             // Countrylbl
             // 
             this.Countrylbl.AutoSize = true;
-            this.Countrylbl.Location = new System.Drawing.Point(697, 94);
+            this.Countrylbl.Location = new System.Drawing.Point(752, 100);
             this.Countrylbl.Name = "Countrylbl";
             this.Countrylbl.Size = new System.Drawing.Size(46, 15);
             this.Countrylbl.TabIndex = 4;
@@ -91,7 +92,7 @@
             // Pricelbl
             // 
             this.Pricelbl.AutoSize = true;
-            this.Pricelbl.Location = new System.Drawing.Point(697, 169);
+            this.Pricelbl.Location = new System.Drawing.Point(697, 140);
             this.Pricelbl.Name = "Pricelbl";
             this.Pricelbl.Size = new System.Drawing.Size(46, 15);
             this.Pricelbl.TabIndex = 5;
@@ -100,7 +101,7 @@
             // countlbl
             // 
             this.countlbl.AutoSize = true;
-            this.countlbl.Location = new System.Drawing.Point(697, 134);
+            this.countlbl.Location = new System.Drawing.Point(697, 121);
             this.countlbl.Name = "countlbl";
             this.countlbl.Size = new System.Drawing.Size(46, 15);
             this.countlbl.TabIndex = 6;
@@ -109,7 +110,7 @@
             // Actuallbl
             // 
             this.Actuallbl.AutoSize = true;
-            this.Actuallbl.Location = new System.Drawing.Point(697, 46);
+            this.Actuallbl.Location = new System.Drawing.Point(700, 100);
             this.Actuallbl.Name = "Actuallbl";
             this.Actuallbl.Size = new System.Drawing.Size(46, 15);
             this.Actuallbl.TabIndex = 7;
@@ -117,17 +118,27 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(811, 44);
+            this.numericUpDown1.Location = new System.Drawing.Point(813, 39);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(81, 23);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(600, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(198, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Колличество билетов для покупки";
             // 
             // OrderViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.Actuallbl);
             this.Controls.Add(this.countlbl);
@@ -157,5 +168,6 @@
         private Label countlbl;
         private Label Actuallbl;
         private NumericUpDown numericUpDown1;
+        private Label label3;
     }
 }

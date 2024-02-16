@@ -78,7 +78,8 @@ namespace TourTest.Forms.Main
             }
             else
             {
-                butZakaz.Enabled = false;
+                butZakaz.Enabled = true;
+                comboBox.Enabled = false;
 
             }
 
