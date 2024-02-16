@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.idOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,9 +42,6 @@
             this.pickUpPointDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pickUpCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +70,32 @@
             this.dataGridView1.Size = new System.Drawing.Size(843, 365);
             this.dataGridView1.TabIndex = 0;
             // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(TourTest.Models.Order);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0-10%",
+            "11-14%",
+            "15%"});
+            this.comboBox1.Location = new System.Drawing.Point(149, 9);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Фильтрация по скидке";
+            // 
             // idOrderDataGridViewTextBoxColumn
             // 
             this.idOrderDataGridViewTextBoxColumn.DataPropertyName = "IdOrder";
@@ -82,6 +108,7 @@
             this.User.HeaderText = "Пользователь";
             this.User.Name = "User";
             this.User.ReadOnly = true;
+            this.User.Visible = false;
             // 
             // dateOrderDataGridViewTextBoxColumn
             // 
@@ -132,32 +159,6 @@
             this.tourDataGridViewTextBoxColumn.Name = "tourDataGridViewTextBoxColumn";
             this.tourDataGridViewTextBoxColumn.ReadOnly = true;
             this.tourDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(TourTest.Models.Order);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "0-10%",
-            "11-14%",
-            "15%"});
-            this.comboBox1.Location = new System.Drawing.Point(149, 9);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Фильтрация по скидке";
             // 
             // ZakazForm
             // 

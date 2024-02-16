@@ -65,7 +65,7 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(118, 40);
             this.buttonEdit.TabIndex = 5;
-            this.buttonEdit.Text = "EDIT";
+            this.buttonEdit.Text = "ИЗМЕНИТЬ";
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click_1);
             // 
@@ -81,7 +81,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(118, 40);
             this.buttonAdd.TabIndex = 6;
-            this.buttonAdd.Text = "ADD";
+            this.buttonAdd.Text = "ИЗОБРАЖЕНИЕ";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -125,11 +125,11 @@
             // 
             this.Price.AutoSize = true;
             this.Price.BackColor = System.Drawing.Color.Transparent;
-            this.Price.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Price.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Price.Location = new System.Drawing.Point(71, 185);
             this.Price.Name = "Price";
-            this.Price.Size = new System.Drawing.Size(50, 20);
+            this.Price.Size = new System.Drawing.Size(53, 20);
             this.Price.TabIndex = 10;
             this.Price.Text = "Login";
             // 

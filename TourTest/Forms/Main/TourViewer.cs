@@ -13,6 +13,7 @@ using TourTest.context;
 using TourTest.Forms.Main.HelperForm;
 using TourTest.Models;
 using TourTest.Models.profiles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TourTest.Forms.Main
 {
@@ -68,7 +69,6 @@ namespace TourTest.Forms.Main
             using (var db = new TourContext(DbOptions.Options()))
             {
                 var tourDB = db.Tours.Include(x=>x.Types).FirstOrDefault(x => x.Id == Tour.Id);
-               
                 var tourInfoForm = new AddTour(tourDB);
                 var result = tourInfoForm.ShowDialog();
                 if (result == DialogResult.OK)
@@ -86,11 +86,17 @@ namespace TourTest.Forms.Main
                         $"Цена: {tourDB.Price}", "Предупреждение!",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
-
+                        if (tourDB.Types.Count == 0)
+                        {
                             db.Tours.Remove(tourDB);
                             db.SaveChanges();
                             this.Hide();
-                        
+                        }
+                        else MessageBox.Show($"Сначал уберите галочку с туров");
+
+
+
+
 
 
                         onAddTour?.Invoke(-((int)tourDB.Price * tourDB.TicketCount));

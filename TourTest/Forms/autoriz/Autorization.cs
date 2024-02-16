@@ -47,6 +47,7 @@ namespace TourTest.Forms.autoriz
                             profile.user = 3;
                             break;
                     }
+                    MessageBox.Show("Вы успешно вошли!");
                     ToursForm.Show();
 
                 }

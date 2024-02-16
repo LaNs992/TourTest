@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.hotelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UserN = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.butAdd = new System.Windows.Forms.Button();
+            this.butDel = new System.Windows.Forms.Button();
+            this.butEdit = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countOfStarsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,13 +46,6 @@
             this.hotelCommentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hotelImagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toursDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hotelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UserN = new System.Windows.Forms.Label();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.butAdd = new System.Windows.Forms.Button();
-            this.butDel = new System.Windows.Forms.Button();
-            this.butEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hotelBindingSource)).BeginInit();
             this.statusStrip.SuspendLayout();
@@ -76,75 +76,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(514, 338);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countOfStarsDataGridViewTextBoxColumn
-            // 
-            this.countOfStarsDataGridViewTextBoxColumn.DataPropertyName = "CountOfStars";
-            this.countOfStarsDataGridViewTextBoxColumn.HeaderText = "CountOfStars";
-            this.countOfStarsDataGridViewTextBoxColumn.Name = "countOfStarsDataGridViewTextBoxColumn";
-            this.countOfStarsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryCodeDataGridViewTextBoxColumn
-            // 
-            this.countryCodeDataGridViewTextBoxColumn.DataPropertyName = "CountryCode";
-            this.countryCodeDataGridViewTextBoxColumn.HeaderText = "CountryCode";
-            this.countryCodeDataGridViewTextBoxColumn.Name = "countryCodeDataGridViewTextBoxColumn";
-            this.countryCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // countryCodeNavigationDataGridViewTextBoxColumn
-            // 
-            this.countryCodeNavigationDataGridViewTextBoxColumn.DataPropertyName = "CountryCodeNavigation";
-            this.countryCodeNavigationDataGridViewTextBoxColumn.HeaderText = "CountryCodeNavigation";
-            this.countryCodeNavigationDataGridViewTextBoxColumn.Name = "countryCodeNavigationDataGridViewTextBoxColumn";
-            this.countryCodeNavigationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.countryCodeNavigationDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // hotelCommentsDataGridViewTextBoxColumn
-            // 
-            this.hotelCommentsDataGridViewTextBoxColumn.DataPropertyName = "HotelComments";
-            this.hotelCommentsDataGridViewTextBoxColumn.HeaderText = "HotelComments";
-            this.hotelCommentsDataGridViewTextBoxColumn.Name = "hotelCommentsDataGridViewTextBoxColumn";
-            this.hotelCommentsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hotelCommentsDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // hotelImagesDataGridViewTextBoxColumn
-            // 
-            this.hotelImagesDataGridViewTextBoxColumn.DataPropertyName = "HotelImages";
-            this.hotelImagesDataGridViewTextBoxColumn.HeaderText = "HotelImages";
-            this.hotelImagesDataGridViewTextBoxColumn.Name = "hotelImagesDataGridViewTextBoxColumn";
-            this.hotelImagesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hotelImagesDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // toursDataGridViewTextBoxColumn
-            // 
-            this.toursDataGridViewTextBoxColumn.DataPropertyName = "Tours";
-            this.toursDataGridViewTextBoxColumn.HeaderText = "Tours";
-            this.toursDataGridViewTextBoxColumn.Name = "toursDataGridViewTextBoxColumn";
-            this.toursDataGridViewTextBoxColumn.ReadOnly = true;
-            this.toursDataGridViewTextBoxColumn.Visible = false;
             // 
             // hotelBindingSource
             // 
@@ -220,6 +151,75 @@
             this.butEdit.UseVisualStyleBackColor = false;
             this.butEdit.Click += new System.EventHandler(this.butEdit_Click);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countOfStarsDataGridViewTextBoxColumn
+            // 
+            this.countOfStarsDataGridViewTextBoxColumn.DataPropertyName = "CountOfStars";
+            this.countOfStarsDataGridViewTextBoxColumn.HeaderText = "Звезды";
+            this.countOfStarsDataGridViewTextBoxColumn.Name = "countOfStarsDataGridViewTextBoxColumn";
+            this.countOfStarsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countryCodeDataGridViewTextBoxColumn
+            // 
+            this.countryCodeDataGridViewTextBoxColumn.DataPropertyName = "CountryCode";
+            this.countryCodeDataGridViewTextBoxColumn.HeaderText = " Страна";
+            this.countryCodeDataGridViewTextBoxColumn.Name = "countryCodeDataGridViewTextBoxColumn";
+            this.countryCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // countryCodeNavigationDataGridViewTextBoxColumn
+            // 
+            this.countryCodeNavigationDataGridViewTextBoxColumn.DataPropertyName = "CountryCodeNavigation";
+            this.countryCodeNavigationDataGridViewTextBoxColumn.HeaderText = "CountryCodeNavigation";
+            this.countryCodeNavigationDataGridViewTextBoxColumn.Name = "countryCodeNavigationDataGridViewTextBoxColumn";
+            this.countryCodeNavigationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.countryCodeNavigationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // hotelCommentsDataGridViewTextBoxColumn
+            // 
+            this.hotelCommentsDataGridViewTextBoxColumn.DataPropertyName = "HotelComments";
+            this.hotelCommentsDataGridViewTextBoxColumn.HeaderText = "HotelComments";
+            this.hotelCommentsDataGridViewTextBoxColumn.Name = "hotelCommentsDataGridViewTextBoxColumn";
+            this.hotelCommentsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hotelCommentsDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // hotelImagesDataGridViewTextBoxColumn
+            // 
+            this.hotelImagesDataGridViewTextBoxColumn.DataPropertyName = "HotelImages";
+            this.hotelImagesDataGridViewTextBoxColumn.HeaderText = "HotelImages";
+            this.hotelImagesDataGridViewTextBoxColumn.Name = "hotelImagesDataGridViewTextBoxColumn";
+            this.hotelImagesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hotelImagesDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // toursDataGridViewTextBoxColumn
+            // 
+            this.toursDataGridViewTextBoxColumn.DataPropertyName = "Tours";
+            this.toursDataGridViewTextBoxColumn.HeaderText = "Tours";
+            this.toursDataGridViewTextBoxColumn.Name = "toursDataGridViewTextBoxColumn";
+            this.toursDataGridViewTextBoxColumn.ReadOnly = true;
+            this.toursDataGridViewTextBoxColumn.Visible = false;
+            // 
             // HotelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -248,6 +248,10 @@
         private Label UserN;
         private StatusStrip statusStrip;
         private BindingSource hotelBindingSource;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private Button butAdd;
+        private Button butDel;
+        private Button butEdit;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn countOfStarsDataGridViewTextBoxColumn;
@@ -257,9 +261,5 @@
         private DataGridViewTextBoxColumn hotelCommentsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn hotelImagesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn toursDataGridViewTextBoxColumn;
-        private ToolStripStatusLabel toolStripStatusLabel1;
-        private Button butAdd;
-        private Button butDel;
-        private Button butEdit;
     }
 }

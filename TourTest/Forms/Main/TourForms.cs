@@ -28,6 +28,8 @@ namespace TourTest.Forms.Main
             InitializeComponent();
             comboBox1.DisplayMember = nameof(Type.Name);
             comboBox1.ValueMember = nameof(Type.Id);
+            comboBox1.Text = "Все типы";
+
             Namelbl.Text = Username;
             Roles();
         }
@@ -37,6 +39,7 @@ namespace TourTest.Forms.Main
             AddTour addbtn= new AddTour();
             if (addbtn.ShowDialog() == DialogResult.OK)
             {
+                MessageBox.Show("Тур добавлен!");
                 using (var db = new TourContext(DbOptions.Options()))
                 {
                     var ids = addbtn.GetTypeIdsChecked();
@@ -55,6 +58,7 @@ namespace TourTest.Forms.Main
 
 
                 }
+                
             }
                
 
@@ -169,6 +173,7 @@ namespace TourTest.Forms.Main
             {
                 buttonAuto.Enabled= true;
                 Zakaz.Enabled= true;
+                button2.Enabled = true;
 
             }else 
             {
@@ -239,6 +244,13 @@ namespace TourTest.Forms.Main
 
         private void Namelbl_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            orders.Clear();
+            CountCorLbl.Text = $"В корзине: {orders.Count}";
 
         }
     }

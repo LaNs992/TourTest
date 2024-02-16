@@ -30,7 +30,7 @@ namespace TourTest.Forms.Main
             Roles();
             initDatagrid();
         }
-
+        public Hotel hotel1;
         public void initDatagrid()
         {
             using (var db = new TourContext(DbOptions.Options()))

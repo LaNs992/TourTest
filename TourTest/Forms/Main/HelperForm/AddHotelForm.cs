@@ -18,6 +18,7 @@ namespace TourTest.Forms.Main.HelperForm
         public AddHotelForm()
         {
             InitializeComponent();
+
             hotel = new Hotel();
             using (var db = new TourContext(DbOptions.Options()))
             {
@@ -25,6 +26,9 @@ namespace TourTest.Forms.Main.HelperForm
                 comboBoxCountri.Items.AddRange(db.Countries.ToArray());
                 comboBoxCountri.SelectedIndex = 0;
             }
+            numericUpDownStars.Value = 1;
+
+
         }
         public Hotel Hotel => hotel;
         public AddHotelForm(Hotel hotel) : this()
@@ -39,6 +43,8 @@ namespace TourTest.Forms.Main.HelperForm
 
         private void comboBoxCountri_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            
             hotel.CountryCode = ((Country)comboBoxCountri.SelectedItem).Code;
 
         }
@@ -60,6 +66,11 @@ namespace TourTest.Forms.Main.HelperForm
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             hotel.Name = textBoxName.Text;
+
+            if (numericUpDownStars.Value == 0)
+            {
+                numericUpDownStars.Value = 1;
+            }
         }
     }
 }

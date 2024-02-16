@@ -25,7 +25,8 @@ namespace TourTest.Forms.Main.HelperForm
             Text = "Добавление тура";
             addButton.Text = "Добавить";
 
-            countryComboBox.DisplayMember = nameof(Country.Code);
+            countryComboBox.DisplayMember = nameof(Country.Name);
+            countryComboBox.ValueMember = nameof(Country.Code);
 
             checkedListBox1.DisplayMember = nameof(Models.Type.Name);
             using (var db = new TourContext(DbOptions.Options()))
@@ -130,6 +131,11 @@ namespace TourTest.Forms.Main.HelperForm
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
         {
 
         }

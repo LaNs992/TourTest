@@ -106,6 +106,7 @@
             this.addButton.TabIndex = 29;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // label2
             // 
@@ -121,8 +122,6 @@
             // 
             this.isActualChecked.AutoSize = true;
             this.isActualChecked.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.isActualChecked.Checked = true;
-            this.isActualChecked.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isActualChecked.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.isActualChecked.Location = new System.Drawing.Point(269, 360);
             this.isActualChecked.Name = "isActualChecked";
@@ -149,20 +148,10 @@
             0,
             0,
             0});
-            this.ticketsNumeric.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.ticketsNumeric.Name = "ticketsNumeric";
             this.ticketsNumeric.ReadOnly = true;
             this.ticketsNumeric.Size = new System.Drawing.Size(194, 23);
             this.ticketsNumeric.TabIndex = 23;
-            this.ticketsNumeric.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.ticketsNumeric.ValueChanged += new System.EventHandler(this.ticketsNumeric_ValueChanged);
             // 
             // costTextBox

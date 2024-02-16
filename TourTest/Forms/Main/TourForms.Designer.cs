@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Zakaz = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Count = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.butOrder = new System.Windows.Forms.Button();
             this.CountCorLbl = new System.Windows.Forms.Label();
+            this.buttonAuto = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.Moneylbl = new System.Windows.Forms.Label();
             this.AllSumm = new System.Windows.Forms.Label();
             this.Namelbl = new System.Windows.Forms.Label();
@@ -41,17 +46,14 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.butOrder = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonAuto = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.Zakaz = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.Zakaz);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Count);
@@ -70,9 +72,43 @@
             this.panel1.Controls.Add(this.searchTextBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.MaximumSize = new System.Drawing.Size(733, 160);
+            this.panel1.MinimumSize = new System.Drawing.Size(733, 160);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 160);
             this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(635, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 25);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Очистить";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Zakaz
+            // 
+            this.Zakaz.BackColor = System.Drawing.Color.RoyalBlue;
+            this.Zakaz.Enabled = false;
+            this.Zakaz.FlatAppearance.BorderSize = 0;
+            this.Zakaz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Zakaz.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Zakaz.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Zakaz.Location = new System.Drawing.Point(261, 108);
+            this.Zakaz.Name = "Zakaz";
+            this.Zakaz.Size = new System.Drawing.Size(117, 25);
+            this.Zakaz.TabIndex = 18;
+            this.Zakaz.Text = "Заказы";
+            this.Zakaz.UseVisualStyleBackColor = false;
+            this.Zakaz.Click += new System.EventHandler(this.Zakaz_Click);
             // 
             // label2
             // 
@@ -107,6 +143,21 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Общая сумма";
             // 
+            // butOrder
+            // 
+            this.butOrder.BackColor = System.Drawing.Color.RoyalBlue;
+            this.butOrder.FlatAppearance.BorderSize = 0;
+            this.butOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butOrder.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.butOrder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.butOrder.Location = new System.Drawing.Point(384, 108);
+            this.butOrder.Name = "butOrder";
+            this.butOrder.Size = new System.Drawing.Size(96, 25);
+            this.butOrder.TabIndex = 14;
+            this.butOrder.Text = "КОРЗИНА";
+            this.butOrder.UseVisualStyleBackColor = false;
+            this.butOrder.Click += new System.EventHandler(this.butOrder_Click);
+            // 
             // CountCorLbl
             // 
             this.CountCorLbl.AutoSize = true;
@@ -117,6 +168,37 @@
             this.CountCorLbl.Size = new System.Drawing.Size(99, 19);
             this.CountCorLbl.TabIndex = 13;
             this.CountCorLbl.Text = "В корзине:";
+            // 
+            // buttonAuto
+            // 
+            this.buttonAuto.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonAuto.Enabled = false;
+            this.buttonAuto.FlatAppearance.BorderSize = 0;
+            this.buttonAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAuto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAuto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAuto.Location = new System.Drawing.Point(609, 108);
+            this.buttonAuto.Name = "buttonAuto";
+            this.buttonAuto.Size = new System.Drawing.Size(117, 25);
+            this.buttonAuto.TabIndex = 8;
+            this.buttonAuto.Text = "ДОБАВИТЬ ТУРЫ";
+            this.buttonAuto.UseVisualStyleBackColor = false;
+            this.buttonAuto.Click += new System.EventHandler(this.buttonAuto_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(486, 108);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 25);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "ОТЕЛИ";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Moneylbl
             // 
@@ -135,7 +217,7 @@
             this.AllSumm.AutoSize = true;
             this.AllSumm.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AllSumm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AllSumm.Location = new System.Drawing.Point(571, 79);
+            this.AllSumm.Location = new System.Drawing.Point(546, 80);
             this.AllSumm.Name = "AllSumm";
             this.AllSumm.Size = new System.Drawing.Size(108, 19);
             this.AllSumm.TabIndex = 10;
@@ -210,52 +292,6 @@
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
-            // butOrder
-            // 
-            this.butOrder.BackColor = System.Drawing.Color.RoyalBlue;
-            this.butOrder.FlatAppearance.BorderSize = 0;
-            this.butOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.butOrder.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.butOrder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.butOrder.Location = new System.Drawing.Point(384, 108);
-            this.butOrder.Name = "butOrder";
-            this.butOrder.Size = new System.Drawing.Size(96, 25);
-            this.butOrder.TabIndex = 14;
-            this.butOrder.Text = "КОРЗИНА";
-            this.butOrder.UseVisualStyleBackColor = false;
-            this.butOrder.Click += new System.EventHandler(this.butOrder_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(486, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 25);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "ОТЕЛИ";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonAuto
-            // 
-            this.buttonAuto.BackColor = System.Drawing.Color.RoyalBlue;
-            this.buttonAuto.Enabled = false;
-            this.buttonAuto.FlatAppearance.BorderSize = 0;
-            this.buttonAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAuto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonAuto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonAuto.Location = new System.Drawing.Point(609, 108);
-            this.buttonAuto.Name = "buttonAuto";
-            this.buttonAuto.Size = new System.Drawing.Size(117, 25);
-            this.buttonAuto.TabIndex = 8;
-            this.buttonAuto.Text = "ДОБАВИТЬ ТУРЫ";
-            this.buttonAuto.UseVisualStyleBackColor = false;
-            this.buttonAuto.Click += new System.EventHandler(this.buttonAuto_Click);
-            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.AutoScroll = true;
@@ -264,22 +300,6 @@
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(713, 446);
             this.flowLayoutPanel4.TabIndex = 2;
-            // 
-            // Zakaz
-            // 
-            this.Zakaz.BackColor = System.Drawing.Color.RoyalBlue;
-            this.Zakaz.Enabled = false;
-            this.Zakaz.FlatAppearance.BorderSize = 0;
-            this.Zakaz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Zakaz.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Zakaz.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Zakaz.Location = new System.Drawing.Point(261, 108);
-            this.Zakaz.Name = "Zakaz";
-            this.Zakaz.Size = new System.Drawing.Size(117, 25);
-            this.Zakaz.TabIndex = 18;
-            this.Zakaz.Text = "Заказы";
-            this.Zakaz.UseVisualStyleBackColor = false;
-            this.Zakaz.Click += new System.EventHandler(this.Zakaz_Click);
             // 
             // TourForms
             // 
@@ -322,5 +342,6 @@
         private Label Count;
         private Label label2;
         private Button Zakaz;
+        private Button button2;
     }
 }

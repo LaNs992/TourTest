@@ -57,20 +57,10 @@
             0,
             0,
             0});
-            this.numericUpDownStars.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownStars.Name = "numericUpDownStars";
             this.numericUpDownStars.ReadOnly = true;
             this.numericUpDownStars.Size = new System.Drawing.Size(276, 23);
             this.numericUpDownStars.TabIndex = 1;
-            this.numericUpDownStars.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownStars.ValueChanged += new System.EventHandler(this.numericUpDownStars_ValueChanged);
             // 
             // label1
